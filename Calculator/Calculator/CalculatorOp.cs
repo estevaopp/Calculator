@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    public class CalculatorOp
-    {
-        public CalculatorOp()
+    public static class CalculatorOp
+    {        
+        public static double DoOperation(double x, double y, char option)
         {
-
-        }
-        public static double? DoOperation(double x, double y, char option)
-        {
-            double? result = null;
+            double result = double.NaN;
             switch (option)
             {
                 case 'A':
@@ -27,14 +23,12 @@ namespace Calculator
                     result = x * y;
                     break;
                 case 'D':
-                    result = null;
                     if (y != 0)
                     {
                         result = x / y;
                     }
                     break;
                 default:
-                    result = null;
                     break;
             }
             return result;

@@ -13,26 +13,47 @@ namespace Calculator
             char option;
             double x;
             double y;
-            double? result;
+            double result;
+            char[] possibles = { 'S', 'M', 'D', 'E' };
 
-            Console.WriteLine("Escolha uma operação:");
-            Console.WriteLine("\tS - Subtract");
-            Console.WriteLine("\tM - Multiply");
-            Console.WriteLine("\tD - Divide");
-            Console.WriteLine("\tE - Exit");
-            Console.WriteLine("Your Option?");
+            while (true)
+            {
+                do
+                {
+                    
 
-            option = Console.ReadLine()[0];
+                    Console.WriteLine("Escolha uma operação:");
+                    Console.WriteLine("\tS - Subtract");
+                    Console.WriteLine("\tM - Multiply");
+                    Console.WriteLine("\tD - Divide");
+                    Console.WriteLine("\tE - Exit");
+                    Console.WriteLine("Your Option?");
 
-            Console.WriteLine();
+                    option = Console.ReadLine().ToUpper()[0];
 
-            Console.Write("Type a number, and then press Enter: ");
-            x = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Type another number, and then press Enter: ");
-            y = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine();
+                } while (possibles.Contains(option));
+                
+
+                if (option == 'E')
+                {
+                    Console.WriteLine("Exit the program");
+                    return;
+                }
+
+                Console.Write("Type a number, and then press Enter: ");
+                x = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Type another number, and then press Enter: ");
+                y = Convert.ToDouble(Console.ReadLine());
 
 
-            result = CalculatorOp.DoOperation(x, y, option);
+                result = CalculatorOp.DoOperation(x, y, option);
+
+                if (double.IsNaN(result))
+                {
+                    Console.WriteLine($"This operation will result in a mathematical error.\n");
+                }
+            }  
         }
 
     }
